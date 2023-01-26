@@ -1,0 +1,57 @@
+// Product Modeling
+// Variante 1
+digitaltwin Building {
+
+  datadescription {
+    interface Thermostat {
+      id "dtmi:com:example:Thermostat;1";
+      telemetry double temp;
+      operation writable double setPointTemp;
+      context "dtmi:dtdl:context;2";
+    }
+  }
+
+  behavior description {
+     	states Idle, TempTooLow, TempTooHigh;
+	Idle -> TempTooLow [temp < 20] / {setTemp(20)};
+	Idle -> TempTooHigh [temp > 20] / {setTemp(20)};
+	TempTooLow, TempTooHigh -> [temp == 20] /{};
+  }
+}
+
+
+digitaltwin Building {
+
+  datadescription {
+    componentType Thermostat {
+      property double temp, isTimeSeries=true;
+      function setTemp returns boolean;
+    }
+  }
+
+  behavior description {
+      	states Idle, TempTooLow, TempTooHigh;
+	Idle -> TempTooLow [temp < 20] / {setTemp(20)};
+	Idle -> TempTooHigh [temp > 20] / {setTemp(20)};
+	TempTooLow, TempTooHigh -> IDLE [temp == 20] /{};
+
+  }
+}
+
+// todo: ist Ausgangspunkt hier, dass ich KEINE Komposition habe? Oder ist die erste contribution bereits, dass ich die StateMachine in unserem Ansatz nur 1x definieren muss?
+
+# Test Cases (example models): 
+entity "Thermostat1"{
+	temp: 20 -> Idle
+}
+entity "Thermostat2"{
+	temp: 25 -> TempTooHigh
+}
+entity "Thermostat3"{
+	temp: 18 -> TempTooLow
+}
+entity "Thermostat4"{
+	temp: 20
+}
+
+

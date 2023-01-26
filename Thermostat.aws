@@ -1,0 +1,83 @@
+// new
+componentType Thermostat {
+  tags { ["id", "dtmi:com:example:Thermostat;1"],
+   ["context", "dtmi:dtdl:context;2"] }
+  propertyDefinition timeSeries double temp;
+  propertyDefinition double setPointTemp;
+
+  behavior {
+    states A, B, C;
+    A -> B [temp < 5] / setPointTemp(10);
+  }
+}
+
+// DT product line
+dt product line {
+  base arc: MapeK.arc {
+    Monitor, Analyzer, Planner, Executor
+  }
+  DT PL { // integrierte Software und Sprachfeatures
+    feature DT {
+      feature Behavior {
+        feature Momot,
+        feature SC,
+        feature CBR
+      }
+      feature Data {
+        feature CD,
+        feature DTDL,
+        feature AWSTM
+      }
+    }
+  }
+
+  binding {
+    Monitor with Data;
+    //...
+  }
+}
+
+// DT configuration
+dt configuration {
+  SC, DTDL;
+} // --> DTProduct { Monitor: DTDL //}
+
+
+// Product Modeling
+// Variante 1
+digitaltwin Building {
+
+  datadescription {
+    interface Thermostat {
+      id "dtmi:com:example:Thermostat;1";
+      telemetry double temp;
+      property writable double setPointTemp;
+      context "dtmi:dtdl:context;2";
+    }
+  }
+
+  behavior description {
+     behavior Thermo {
+        states A, B, C;
+        A -> B [temp < 5] / setPointTemp(10);
+      }
+  }
+}
+
+// Variante 2
+interface Thermostat {
+  id "dtmi:com:example:Thermostat;1";
+  telemetry double temp;
+  property writable double setPointTemp;
+  context "dtmi:dtdl:context;2";
+  behavior Thermo {
+    states A, B, C;
+    A -> B [temp < 5] / setPointTemp(10);
+  }
+}
+
+// DT Deployment
+dt deployment {
+
+}
+
