@@ -1,3 +1,6 @@
+package archive;
+import generic.Executor;
+
 public class Planner{
 	
 	public Planner(StateMachine stateMachine){
