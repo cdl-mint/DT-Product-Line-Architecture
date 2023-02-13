@@ -1,15 +1,14 @@
 package de.monticore.lang;
 
-grammar DTDL extends de.monticore.literals.MCJavaLiterals, de.monticore.types.MCBasicTypes  {
+grammar DTDL extends de.monticore.lang.DTStructure {
 
-  DTDLDefinition = InterfaceDefinition+;
-
+  DTDLCompilationUnit = StructureDefinitionCompilationUnit;
 
   ////////////// DTMI //////////////
-  interface DTMI;
+  interface DTMI extends ITypeElement;
   Version implements DTMI = "version" SignedInteger ";";
-  Schema implements DTMI = "schema" MCType ";";
-  Path implements DTMI = "path" MCQualifiedName ";";
+  Schema implements DTMI = "schema" Type ";";
+  Path implements DTMI = "path" QualifiedName ";";
   ID implements DTMI = "id" StringLiteral ";";
 
   ////////////// DTELement //////////////
@@ -19,27 +18,30 @@ grammar DTDL extends de.monticore.literals.MCJavaLiterals, de.monticore.types.MC
   DTDLComment implements DTElement = "comment" StringLiteral ";";
 
   ////////////// Interface //////////////
-  InterfaceDefinition = "interface" Name ("extends" (Name | ",")*)? "{"
-    (DTMI | DTElement | DTDLContent)*
+  InterfaceDefinition implements ITypeDefinition = "interface" Name ITypeExtension? "{"
+    (ITypeElement | IMethodDefinition | IPropertyDefinition)*
   "}";
 
-  interface DTDLContent;
+  InterfaceExtension implements ITypeExtension = "extends" Name;
+
+  interface DTDLContent extends ITypeElement;
 
   Context implements DTDLContent = "context" StringLiteral ";";
 
   ////////////// Command //////////////
-  Command implements DTDLContent = "command" Name "{" Request? Response? "}" ";";
-  Request = "request" "{" paramName:Name "{" (DTMI | DTElement)+ "}" "}";
-  Response = "response" "{" paramName:Name "{" (DTMI | DTElement)+ "}" "}";
+  Command implements IMethodDefinition = "command" Name "{" IMethodParameter* "}" ";";
+
+  Request implements IMethodParameter = "request" "{" paramName:Name "{" (DTMI | DTElement)+ "}" "}";
+  Response implements IMethodParameter = "response" "{" paramName:Name "{" (DTMI | DTElement)+ "}" "}";
 
   ////////////// Property //////////////
-  Property implements DTDLContent = "property" ["writable"]? schema:MCType Name ";";
+  Property implements IPropertyDefinition = "property" ["writable"]? Type Name ";";
 
   ////////////// Telemetry //////////////
-  Telemetry implements DTDLContent = "telemetry" schema:MCType Name ";";
+  Telemetry implements IPropertyDefinition = "telemetry" Type Name ";";
 
   ////////////// Relationship //////////////
-  Relationship implements DTDLContent = "relationship" ["writable"]? Name
+  Relationship implements IAssociation = "relationship" ["writable"]? Name
                                         ("[" min:SignedInteger "," max:SignedInteger "]")? target:Name ";";
 
 }

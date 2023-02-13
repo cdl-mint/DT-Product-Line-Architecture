@@ -1,0 +1,26 @@
+package aut;
+
+grammar Automaton extends de.monticore.lang.DTBehavior {
+
+  AutomatonDefinitionCompilationUnit = BehaviorDefinitionCompilationUnit;
+
+  scope symbol Automaton implements IBehaviorDefinition = "statechart" Name "{" IBehaviorImpl "}";
+
+  AutomatonImpl implements IBehaviorImpl = (IState | Transition)*;
+  
+  interface IState;
+  interface IAction;
+  interface IGuardExpr;
+  
+  symbol StateBase implements IState = ["initial"]? "state" Name ";";
+  
+  Transition = source:Name "->" target:Name "[" IGuardExpr "]" "/" "{" IAction "}" ";";
+
+  BaseGuardExpression implements IGuardExpr = Expression;
+  ActionBase implements IAction = (Assignment | (call:["call"] Expression))?;
+  Assignment = PropertyReference assignment:["="] Value;
+  symbol PropertyReference = Name;
+
+  Value = Expression;
+  
+}

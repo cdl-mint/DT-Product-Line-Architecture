@@ -1,0 +1,17 @@
+package de.monticore.lang;
+
+component grammar DTBehavior extends de.monticore.types.Types, de.monticore.MCExpressions {
+
+    BehaviorDefinitionCompilationUnit =
+        ("package" package:(Name& || ".")+ ";")?
+        (ImportStatementLOCAL)*                        // import statements
+        IBehaviorDefinition
+        EOF;
+
+    ImportStatementLOCAL = "import" import:(Name& || ".")+ ("." Star:["*"])? ";";
+
+    interface IBehaviorDefinition = Name IBehaviorImpl;
+
+    interface IBehaviorImpl;
+
+}

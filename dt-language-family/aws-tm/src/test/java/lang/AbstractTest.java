@@ -1,5 +1,5 @@
 /* (c) https://github.com/MontiCore/monticore */
-package dtdl.lang;
+package lang;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -10,8 +10,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 
-import de.monticore.lang.dtdl._ast.ASTDTDLDefinition;
-import de.monticore.lang.dtdl._parser.DTDLParser;
+import de.monticore.lang.awstm._ast.ASTAWSTMCompilationUnit;
+
+import de.monticore.lang.awstm._parser.AWSTMParser;
+import de.monticore.lang.dtstructure._ast.ASTIStructureDefinition;
 import org.antlr.v4.runtime.RecognitionException;
 
 
@@ -23,21 +25,22 @@ abstract public class AbstractTest {
   
   /**
    * Parses a model and ensures that the root node is present.
-   * 
+   *
    * @param modelFile the full file name of the model.
    * @return the root of the parsed model.
    */
-  protected ASTDTDLDefinition parseModel(String modelFile) {
+  protected ASTIStructureDefinition parseModel(String modelFile) {
     Path model = Paths.get(modelFile);
-    DTDLParser parser = new DTDLParser();
-    Optional<ASTDTDLDefinition> optAutomaton;
+    AWSTMParser parser = new AWSTMParser();
+    Optional<ASTAWSTMCompilationUnit> optAutomaton;
     try {
       optAutomaton = parser.parse(model.toString());
 
       assertFalse(parser.hasErrors());
 
       assertTrue(optAutomaton.isPresent());
-      return optAutomaton.get();
+      ASTIStructureDefinition iStructureDefinition = optAutomaton.get().getStructureDefinitionCompilationUnit().getIStructureDefinition();
+      return iStructureDefinition;
     }
     catch (RecognitionException | IOException e) {
       e.printStackTrace();
