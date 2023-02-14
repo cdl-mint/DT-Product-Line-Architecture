@@ -3,10 +3,19 @@ package generic;
 public abstract class Monitor {
 
 	private Planner planner;
-	private Endpoint endpoint;
 	
 	public void monitor() {
-		IStructure current = endpoint.poll();
-		planner.plan(current);
+		while(true) {
+			IStructure current = getCurrent();
+			planner.plan(current);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
+	
+	public abstract IStructure getCurrent();
 }
