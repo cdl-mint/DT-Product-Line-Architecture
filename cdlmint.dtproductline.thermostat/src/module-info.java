@@ -1,2 +1,0 @@
-module cdlmint.dtproductline.thermostat {
-}

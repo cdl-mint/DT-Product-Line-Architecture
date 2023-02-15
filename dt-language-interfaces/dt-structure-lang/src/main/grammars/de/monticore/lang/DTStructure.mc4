@@ -1,0 +1,28 @@
+package de.monticore.lang;
+
+component grammar DTStructure extends de.monticore.types.Types, de.monticore.MCExpressions  {
+
+  StructureDefinitionCompilationUnit =
+      ("package" package:(Name& || ".")+ ";")?
+      (ImportStatementLOCAL)*                        // import statements
+      IStructureDefinition
+      EOF;
+
+  ImportStatementLOCAL = "import" import:(Name& || ".")+ ("." Star:["*"])? ";";
+
+  IStructureDefinition = (ITypeDefinition | IAssociation)+;
+
+  interface ITypeDefinition = Name ITypeExtension? (IMethodDefinition | IPropertyDefinition | ITypeElement)*;
+
+  interface ITypeElement;
+
+  interface ITypeExtension = Name;
+
+  interface IMethodDefinition = Name IMethodParameter*; // Return type?
+
+  interface IMethodParameter;
+
+  interface IPropertyDefinition = Type Name;
+
+  interface IAssociation;
+}

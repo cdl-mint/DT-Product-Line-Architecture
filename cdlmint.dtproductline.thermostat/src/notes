@@ -1,5 +1,0 @@
-Wo passiert dependency injection?
-- Beispiel: DTDLMonitor muss wissen, dass er Daten nun an einen (konkreten) SMPlanner sendet
-- (besseres) Beispiel: siehe Code in SMPlanner
-
-IStructure/IBehavior-Klassen können eigentlich aus der Sprache generiert werden (anstatt aus dem Modell)!
