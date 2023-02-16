@@ -4,7 +4,7 @@ import generic.behavior.Planner;
 
 public abstract class Monitor {
 
-	private Planner planner;
+	protected Planner planner;
 	
 	public void monitor() {
 		while(true) {

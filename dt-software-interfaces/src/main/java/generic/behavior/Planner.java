@@ -4,8 +4,8 @@ import generic.structure.Executor;
 import generic.structure.IStructure;
 
 public abstract class Planner {
-	IBehavior behaviorSpec;
-	Executor executor;
+	protected IBehavior behaviorSpec;
+	protected Executor executor;
 	
 	public void plan(IStructure currentStructure) {
 		IStructure.Operation opToExecute = behaviorSpec.compute(currentStructure);
