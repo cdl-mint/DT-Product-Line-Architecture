@@ -1,6 +1,6 @@
 package generic.structure;
 
-public class Executor {
+public abstract class Executor {
 	IStructure proxy;
 	
 	public void executeOperation(IStructure.Operation opToExecute) {

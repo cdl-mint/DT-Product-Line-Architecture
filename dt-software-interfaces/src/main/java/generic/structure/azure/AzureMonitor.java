@@ -7,9 +7,7 @@ import generic.structure.Monitor;
 public class AzureMonitor extends Monitor {
     private AzureTemperatureSensor device1;
 
-    public AzureMonitor(Planner p){
-
-        super.planner = p;
+    public AzureMonitor(){
         this.device1 = new AzureTemperatureSensor();
     }
 

@@ -8,14 +8,14 @@ public class SMBehavior implements IBehavior{
 	
 	public IStructure.Operation compute(IStructure currentStructure){
 		if(state == State.IDLE){
-			if(Integer.getInteger(currentStructure.getAttributeValue("temp")) < 19.5){
+			if(Integer.getInteger(currentStructure.getAttributeValue("temp")) < 19.5) {
 				this.state = State.TEMP_TOO_LOW;
 				IStructure.Operation result = currentStructure.getOperation("setTemp");	
 				result.setParameterValue("targetTemp", "20");
 				return result;
 			}else if(Integer.getInteger(currentStructure.getAttributeValue("temp")) > 20.5) {
 				this.state = State.TEMP_TOO_HIGH;
-				IStructure.Operation result = currentStructure.getOperation("setTemp");	
+				IStructure.Operation result = currentStructure.getOperation("setTemp");
 				result.setParameterValue("targetTemp", "20");
 				return result;
 			}
