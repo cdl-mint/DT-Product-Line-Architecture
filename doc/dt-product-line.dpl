@@ -1,0 +1,57 @@
+// DT product line
+dt product line {
+
+  DT PL { // integrierte Software und Sprachfeatures
+    feature DT {
+      feature SBB {
+        feature TSB, //...
+      }
+      feature DataDescription {
+        feature CD,
+        feature Azure,
+        feature AWSTM
+      }
+    }
+  }
+
+  realizations {
+    Extensions {
+	 SBB.TSB -> TimedStatemachineBehavior;
+	}	
+  }
+}
+
+extension DataDescription {
+  realized by {
+    language a.b.StructureLanguageInterface;
+	software a.b.DataAccessInterface;
+	product interface a.b.IStructure;  
+  }
+}
+
+extension SBB {
+  dependencies {
+    DataDescription
+  }
+  
+  realized by {
+    language a.b.SBBLanguageInterface;
+	software a.b.SBBInterface;
+	product interface a.b.IBehavior;
+  }
+}
+
+module TimedStatemachineBehavior realizes SBB {
+  language a.b.TSB;
+  software TSBPlanner;
+  product TSBBehavior;
+}
+
+
+
+// DT configuration
+dt configuration {
+  TSB, Azure;
+} 
+
+
