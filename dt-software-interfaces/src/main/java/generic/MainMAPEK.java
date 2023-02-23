@@ -18,7 +18,6 @@ public class MainMAPEK {// this is our framework
 
     public static void main(String[] args) {
         IDTExtension an =  MainDT.getExtension("analyzer");
-
         while (true) {
             an.execute();
         }

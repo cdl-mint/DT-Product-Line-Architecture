@@ -12,4 +12,6 @@ public interface IDTExtension {
 
     public void execute();
 
+    public void addDependency(IDTExtension ex);
+
 }

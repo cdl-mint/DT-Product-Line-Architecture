@@ -24,4 +24,9 @@ public class Analyzer implements IDTExtension {
     public void execute() {
 
     }
+
+    @Override
+    public void addDependency(IDTExtension ex) {
+
+    }
 }

@@ -24,13 +24,20 @@ public class MainDT {// this is our framework
         // TODO: wie repräsentieren wir die DT Module hier im Code? Ist das vermutlich eine eigene Klasse?
         Executor ex = new AzureExecutor();
         Monitor mon = new AzureMonitor();
+
+        // create and add Planner Extension
         IBehavior beh = new AutomatonBehavior();
         Planner p = new AutomatonPlanner(ex, beh);
-        extensions.put("planner", p);
-        Analyzer an = new Analyzer(mon, beh);
-        extensions.put("analyzer", an);
         p.setExecutor(ex);
         p.setMonitor(mon);
+        extensions.put("planner", p);
+        // create and add Analyzer Extension
+        Analyzer an = new Analyzer(mon, beh);
+        an.addDependency(p);
+        extensions.put("analyzer", an);
+
+        // TODO: zus. Fall: es gibt eine Abhängigkeit zwischen zwei Komponenten auf Software- und Sprach-Ebene. Gibt es hier ein Beispiel?
+
     }
 
     public static IDTExtension getExtension(String name){
