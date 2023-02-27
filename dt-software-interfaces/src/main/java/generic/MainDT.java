@@ -22,12 +22,14 @@ public class MainDT {// this is our framework
         // here, the configuration of the system is picked
         // TODO: can this code be derived from a model in a language that we propose as a contribution of the paper??
         // TODO: wie repräsentieren wir die DT Module hier im Code? Ist das vermutlich eine eigene Klasse?
+        // TODO: wie konfigurieren bspw. IP-Adresse für Azure connection?
         Executor ex = new AzureExecutor();
         Monitor mon = new AzureMonitor();
 
         // create and add Planner Extension
         IBehavior beh = new AutomatonBehavior();
         Planner p = new AutomatonPlanner(ex, beh);
+
         p.setExecutor(ex);
         p.setMonitor(mon);
         extensions.put("planner", p);

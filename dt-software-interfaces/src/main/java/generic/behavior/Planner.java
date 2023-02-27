@@ -8,11 +8,8 @@ import generic.structure.Monitor;
 public abstract class Planner implements IDTExtension {
 	protected IBehavior behaviorSpec;
 	protected Executor executor;
-
 	protected Monitor monitor;
 
-
-	
 	public void plan(IStructure currentStructure) {
 		IStructure.Operation opToExecute = behaviorSpec.compute(currentStructure);
 		executor.executeOperation(opToExecute);
