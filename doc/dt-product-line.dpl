@@ -2,8 +2,8 @@
 
 /////////// Extension DataDescription
 extension DataDescription {
-  language a.b.StructureLanguageInterface;
   software a.b.DataAccessInterface;
+  language a.b.StructureLanguageInterface;
 }
 
 component DataAccessInterface {
@@ -23,8 +23,8 @@ language component StructureLanguageInterface {
 ////////// Module Azure
 module AzureDataAccess implements DataDescription {
   software AzureDataExplorer {
-    command   -> f;
-	structure -> i;
+    command -> f;
+	i       -> structure;
   }
   
   language DTDL {
@@ -54,8 +54,7 @@ extension SBBehavior {
   }
 
   language a.b.SBBLanguageInterface; //references SCOLAR component
-  software a.b.SBBPlanner; //references MontiArc component 
-  
+  software a.b.SBBPlanner; //references MontiArc component
 }
 
 component SBBPlanner {
@@ -125,18 +124,18 @@ architecture MAPEDTReference {
 }
 
 
-
+// Generate this
 // 3. Definition der Produktlinlie
 // DT product line
-dt product line DT PL for architecture MAPEDTReference { // integrierte Software und Sprachfeatures
-  feature DT {
-    feature SBB {
-      feature TimedStatemachineBehavior, //reference Module
+dt product line DTPL for architecture MAPEDTReference { // integrierte Software und Sprachfeatures
+  architecture MAPEDTReference {
+    extension SBB {
+      module TimedStatemachineBehavior, //reference Module
     }
-    feature DataAccess {
-      feature CD,
-      feature AzureDataAccess,
-      feature AWSTM
+    extension DataAccess {
+      module CD,
+      module AzureDataAccess,
+      module AWSTM
     }
   }
 }
