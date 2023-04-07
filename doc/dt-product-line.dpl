@@ -114,7 +114,7 @@ architecture MAPEDTReference {
     component TSBPlanner planner;
 
     connect data.structure -> planner.s;
-    conncet planner.command -> data.f;
+    connect planner.command -> data.f;
     }
   }
 

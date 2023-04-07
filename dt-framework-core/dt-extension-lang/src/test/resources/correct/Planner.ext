@@ -1,0 +1,7 @@
+extension Planner {
+  dependencies {
+    CoreDT
+  }
+  language a.b.PlannerLang;
+  software a.b.PlannerImpl;
+}

@@ -1,20 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- == PROJECT COORDINATES ============================================= -->
-
-
-    <artifactId>dt-framework</artifactId>
-    <groupId>dt-language-family</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-    <modules>
-	  <module>dt-framework-core</module>
-      <module>dt-language-interfaces</module>
-      <module>dt-software-interfaces</module>
-    </modules>
-
+  <artifactId>dt-extension-lang</artifactId>
+  <groupId>dt-language-family</groupId>
+  <version>0.0.1-SNAPSHOT</version>
   <properties>
     <monticore.version>5.0.1</monticore.version>
     <source.plugin>2.4</source.plugin>
@@ -26,10 +18,9 @@
     <assembly.plugin>2.5.3</assembly.plugin>
     <mc.grammars.assembly.version>0.0.8</mc.grammars.assembly.version>
     <grammars.classifier>grammars</grammars.classifier>
-    <testartifacts.classifier>testartifacts</testartifacts.classifier>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
   </properties>
-  <!-- == PROJECT DEPENDENCIES ============================================= -->
-
   <dependencies>
     <dependency>
       <groupId>de.se_rwth.commons</groupId>
@@ -70,36 +61,6 @@
       <artifactId>monticore-generator</artifactId>
       <version>${monticore.version}</version>
     </dependency>
-    <dependency>
-      <groupId>de.monticore</groupId>
-      <artifactId>javaDSL</artifactId>
-      <version>${javaDSL.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>de.monticore</groupId>
-      <artifactId>javaDSL</artifactId>
-      <version>${javaDSL.version}</version>
-      <classifier>grammars</classifier>
-    </dependency>
-    <dependency>
-      <groupId>feature-diagram</groupId>
-      <version>${feature-diagram-fe.version}</version>
-      <artifactId>feature-diagram-fe</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>feature-diagram</groupId>
-      <version>${feature-diagram-fe.version}</version>
-      <artifactId>feature-diagram-fe</artifactId>
-      <classifier>grammars</classifier>
-    </dependency>
-
-    <dependency>
-      <groupId>feature-diagram</groupId>
-      <version>${feature-diagram-fe.version}</version>
-      <artifactId>feature-configuration-fe</artifactId>
-    </dependency>
-
     <!-- .. Test Libraries ............................................... -->
     <dependency>
       <groupId>junit</groupId>
@@ -122,22 +83,84 @@
       <version>1.1.2</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <artifactId>dt-structure-lang</artifactId>
+      <groupId>dt-language-family</groupId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>dt-structure-lang</artifactId>
+      <groupId>dt-language-family</groupId>
+      <version>0.0.1-SNAPSHOT</version>
+      <classifier>grammars</classifier>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.3</version>
-          <configuration>
-            <useIncrementalCompilation>true</useIncrementalCompilation>
-            <source>1.8</source>
-            <target>1.8</target>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>de.monticore.mojo</groupId>
+        <artifactId>monticore-maven-plugin</artifactId>
+        <version>${monticore.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>${source.plugin}</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>${assembly.plugin}</version>
+        <dependencies>
+          <dependency>
+            <groupId>de.monticore</groupId>
+            <artifactId>mc-assemblies</artifactId>
+            <version>${mc.grammars.assembly.version}</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>grammars</id>
+            <configuration>
+              <descriptorRefs>
+                <descriptorRef>grammars-assembly</descriptorRef>
+              </descriptorRefs>
+              <formats>
+                <format>jar</format>
+              </formats>
+            </configuration>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+
+
+    </plugins>
   </build>
 
 </project>

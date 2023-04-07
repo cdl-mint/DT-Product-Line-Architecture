@@ -25,4 +25,9 @@ component grammar DTStructure extends de.monticore.types.Types, de.monticore.MCE
   interface IPropertyDefinition = Type Name;
 
   interface IAssociation;
+
+  Method  = IMethodDefinition;
+
+  TypeDef = ITypeDefinition;
+
 }
