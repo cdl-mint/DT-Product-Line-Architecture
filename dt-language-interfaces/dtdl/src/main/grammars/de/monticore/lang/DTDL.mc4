@@ -30,7 +30,7 @@ grammar DTDL extends de.monticore.lang.DTStructure {
 
   ////////////// Command //////////////
   Command implements IMethodDefinition = "command" Name "{" IMethodParameter* "}" ";";
-
+ 
   Request implements IMethodParameter = "request" "{" paramName:Name "{" (DTMI | DTElement)+ "}" "}";
   Response implements IMethodParameter = "response" "{" paramName:Name "{" (DTMI | DTElement)+ "}" "}";
 

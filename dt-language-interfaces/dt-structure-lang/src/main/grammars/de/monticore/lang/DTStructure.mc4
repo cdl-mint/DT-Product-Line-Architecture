@@ -14,8 +14,6 @@ component grammar DTStructure extends de.monticore.types.Types, de.monticore.MCE
 
   interface ITypeDefinition = Name ITypeExtension? (IMethodDefinition | IPropertyDefinition | ITypeElement)*;
 
-  interface ITypeElement;
-
   interface ITypeExtension = Name;
 
   interface IMethodDefinition = Name IMethodParameter*; // Return type?
@@ -25,6 +23,10 @@ component grammar DTStructure extends de.monticore.types.Types, de.monticore.MCE
   interface IPropertyDefinition = Type Name;
 
   interface IAssociation;
+
+  interface ITypeDefinition = Name ITypeExtension? (IMethodDefinition | IPropertyDefinition | ITypeElement)*;
+
+  interface ITypeElement;
 
   Method  = IMethodDefinition;
 
