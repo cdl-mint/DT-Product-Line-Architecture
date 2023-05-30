@@ -14,7 +14,7 @@
 
   <modules>
     <module>dt-architecture-lang</module>
-    <module>dt-extension-lang</module>
+    <module>dt-template-lang</module>
     <module>dt-module-lang</module>
 	<module>product-line-lang</module>
 	<module>product-line-conf-lang</module>
