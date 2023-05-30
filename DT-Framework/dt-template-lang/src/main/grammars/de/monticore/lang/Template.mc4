@@ -2,12 +2,19 @@ package de.monticore.lang;
 
 grammar Template extends de.monticore.types.Types {
 
-  TemplateDef = PackageDeclaration? "template" Name "{" ExtensionBody "}";
+  TemplateDef = PackageDeclaration? "template" Name "{" TemplateBody "}";
   PackageDeclaration = ("package" QualifiedName ";" );
 
-  ExtensionBody = (ExtensionDependencies | LanguageComponentRef | SoftwareComponentRef)*;
+  TemplateBody = (LanguageComponentDef | SoftwareComponentDef)*;
 
-  ExtensionDependencies = "dependencies" "{" (QualifiedName || ",")* "}";
-  LanguageComponentRef = "language" QualifiedName ";";
-  SoftwareComponentRef = "software" QualifiedName ";";
+  LanguageComponentDef = "language" Name "{" (ProvidedExtensions | RequiredExtensions)+ "}";
+  ProvidedExtensions = "provides" (Name | ",")+ ";";
+  RequiredExtensions = "requires" (Name | ",")+ ";";
+
+  SoftwareComponentDef = "software" Name "{" (InPort | OutPort)+ "}";
+  InPort = "in" type:Name Name ";";
+  OutPort = "out" type:Name Name ";";
+
+
+
 }

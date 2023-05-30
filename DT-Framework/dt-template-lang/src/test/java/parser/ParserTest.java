@@ -1,7 +1,7 @@
 package parser;
 
-import de.monticore.lang.extension._ast.ASTExtensionDef;
-import de.monticore.lang.extension._parser.ExtensionParser;
+import de.monticore.lang.template._ast.ASTTemplateDef;
+import de.monticore.lang.template._parser.TemplateParser;
 import de.se_rwth.commons.logging.Log;
 import org.antlr.v4.runtime.RecognitionException;
 import org.junit.BeforeClass;
@@ -25,14 +25,14 @@ public class ParserTest {
 
     @Test
     public void testParsePlannerExt() {
-        ASTExtensionDef a = parseModel("src/test/resources/correct/Planner.ext");
+        ASTTemplateDef a = parseModel("src/test/resources/correct/DTPlatform.temp");
         assertNotNull(a);
     }
 
-    protected ASTExtensionDef parseModel(String modelFile) {
+    protected ASTTemplateDef parseModel(String modelFile) {
         Path model = Paths.get(modelFile);
-        ExtensionParser parser = new ExtensionParser();
-        Optional<ASTExtensionDef> optArc;
+        TemplateParser parser = new TemplateParser();
+        Optional<ASTTemplateDef> optArc;
         try {
             optArc = parser.parse(model.toString());
 

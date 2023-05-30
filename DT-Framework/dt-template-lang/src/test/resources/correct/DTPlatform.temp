@@ -1,0 +1,9 @@
+template DTPlatform {
+  software DataAccessInterface {
+    in IMethod command;
+    out IStructure data;
+  }
+  language StructureLang {
+    provides TypeDef, MethodDef, MethodParamDef, PropertyDef, Instance, MethodCall;
+  }
+}

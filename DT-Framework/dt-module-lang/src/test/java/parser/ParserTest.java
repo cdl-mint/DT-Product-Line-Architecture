@@ -23,6 +23,11 @@ public class ParserTest {
     }
 
     @Test
+    public void testParseAWSIoTTwinMakerModule() {
+        ASTModuleDef a = parseModel("src/test/resources/correct/AWSIoTTwinMaker.mod");
+        assertNotNull(a);
+    }
+    @Test
     public void testParseMOMOTModule() {
         ASTModuleDef a = parseModel("src/test/resources/correct/MOMOT.mod");
         assertNotNull(a);
