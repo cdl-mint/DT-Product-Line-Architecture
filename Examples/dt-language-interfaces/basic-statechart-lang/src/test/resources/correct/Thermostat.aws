@@ -1,8 +1,0 @@
-package correct;
-
-componentType Thermostat {
-  tags { ["id", "dtmi:com:example:Thermostat;1"],
-   ["context", "dtmi:dtdl:context;2"] }
-  propertyDefinition timeSeries double temp;
-  function setTemp implementedBy a.b.TemperatureHelper;
-}
