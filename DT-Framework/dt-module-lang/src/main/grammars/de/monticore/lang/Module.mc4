@@ -1,0 +1,20 @@
+package de.monticore.lang;
+
+grammar Module extends de.monticore.types.Types {
+
+  ModuleDef = PackageDeclaration? "module" Name "implements" dtextension:QualifiedName "{" ModuleBody "}";
+
+  ModuleBody = (SoftwareComponentMapping | LanguageComponentMapping)*;
+
+  SoftwareComponentMapping = "software" moduleSoftwareComponentReference:QualifiedName
+                             "{" SoftwareCompMapping+ "}";
+
+  LanguageComponentMapping = "language" moduleLanguageComponentReference:QualifiedName
+                             "{" LanguageCompMapping+ "}";
+
+  SoftwareCompMapping = module:Name "extends" extension:QualifiedName ";";
+  LanguageCompMapping = module:Name "->" extension:QualifiedName ";";
+
+  PackageDeclaration = ("package" QualifiedName ";" );
+
+}

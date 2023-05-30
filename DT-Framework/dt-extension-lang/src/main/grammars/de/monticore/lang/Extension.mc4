@@ -1,0 +1,13 @@
+package de.monticore.lang;
+
+grammar Extension extends de.monticore.types.Types {
+
+  ExtensionDef = PackageDeclaration? "extension" Name "{" ExtensionBody "}";
+  PackageDeclaration = ("package" QualifiedName ";" );
+
+  ExtensionBody = (ExtensionDependencies | LanguageComponentRef | SoftwareComponentRef)*;
+
+  ExtensionDependencies = "dependencies" "{" (QualifiedName || ",")* "}";
+  LanguageComponentRef = "language" QualifiedName ";";
+  SoftwareComponentRef = "software" QualifiedName ";";
+}
