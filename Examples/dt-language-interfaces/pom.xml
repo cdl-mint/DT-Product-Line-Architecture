@@ -13,10 +13,11 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>automata</module>
+    <module>basic-statechart-lang</module>
     <module>aws-tm</module>
     <module>dt-behavior-lang</module>
 	<module>dt-structure-lang</module>
+    <module>dtdl</module>
   </modules>
 
 </project>

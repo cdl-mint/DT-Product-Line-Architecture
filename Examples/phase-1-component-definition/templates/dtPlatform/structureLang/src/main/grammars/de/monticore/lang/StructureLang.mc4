@@ -1,6 +1,6 @@
 package de.monticore.lang;
 
-component grammar DTStructure extends de.monticore.types.Types, de.monticore.MCExpressions  {
+component grammar StructureLang extends de.monticore.types.Types, de.monticore.MCExpressions  {
 
   StructureDefinitionCompilationUnit =
       ("package" package:(Name& || ".")+ ";")?

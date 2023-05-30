@@ -1,0 +1,11 @@
+package de.monticore.lang;
+
+// --> statechart-based // --> aggregation von assignment auf Name
+component grammar DTBehavior extends de.monticore.types.Types, de.monticore.MCExpressions {
+
+    Condition = "condition" Name ConditionElem ConditionProp;
+
+    interface ConditionElem;
+    interface ConditionProp;
+
+}
