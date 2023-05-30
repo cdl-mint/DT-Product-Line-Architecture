@@ -1,7 +1,0 @@
-package de.monticore.lang;
-
-grammar EventCheckingLang extends de.monticore.CheckingLang {
-
-  //TODO
-
-}

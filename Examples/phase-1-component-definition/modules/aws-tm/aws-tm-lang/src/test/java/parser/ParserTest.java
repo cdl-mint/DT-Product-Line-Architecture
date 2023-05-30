@@ -1,6 +1,6 @@
 package parser;
 
-import de.monticore.lang.dtstructure._ast.ASTIStructureDefinition;
+import de.monticore.lang.structurelang._ast.ASTIStructureDefinition;
 import de.se_rwth.commons.logging.Log;
 import lang.AbstractTest;
 import org.junit.BeforeClass;

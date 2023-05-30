@@ -1,7 +1,7 @@
 package de.monticore.lang.awstm._symboltable;
 
-import de.monticore.lang.dtstructure._ast.ASTImportStatementLOCAL;
-import de.monticore.lang.dtstructure._ast.ASTStructureDefinitionCompilationUnit;
+import de.monticore.lang.structurelang._ast.ASTImportStatementLOCAL;
+import de.monticore.lang.structurelang._ast.ASTStructureDefinitionCompilationUnit;
 import de.monticore.symboltable.ArtifactScope;
 import de.monticore.symboltable.ImportStatement;
 import de.monticore.symboltable.MutableScope;

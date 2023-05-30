@@ -4,7 +4,7 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>basic-statechart-lang</artifactId>
+  <artifactId>umlSC</artifactId>
   <groupId>dt-language-family</groupId>
   <version>0.0.1-SNAPSHOT</version>
   <properties>
@@ -57,7 +57,7 @@
     </dependency>
 
     <dependency>
-      <artifactId>aws-tm</artifactId>
+      <artifactId>aws-tm-lang</artifactId>
       <groupId>dt-language-family</groupId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
@@ -77,13 +77,13 @@
     </dependency>
 
     <dependency>
-      <artifactId>dt-behavior-lang</artifactId>
+      <artifactId>plannerLang</artifactId>
       <groupId>dt-language-family</groupId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
-      <artifactId>dt-behavior-lang</artifactId>
+      <artifactId>plannerLang</artifactId>
       <groupId>dt-language-family</groupId>
       <version>0.0.1-SNAPSHOT</version>
       <classifier>grammars</classifier>

@@ -13,7 +13,7 @@ import java.util.Optional;
 import de.monticore.lang.awstm._ast.ASTAWSTMCompilationUnit;
 
 import de.monticore.lang.awstm._parser.AWSTMParser;
-import de.monticore.lang.dtstructure._ast.ASTIStructureDefinition;
+import de.monticore.lang.structurelang._ast.ASTIStructureDefinition;
 import org.antlr.v4.runtime.RecognitionException;
 
 

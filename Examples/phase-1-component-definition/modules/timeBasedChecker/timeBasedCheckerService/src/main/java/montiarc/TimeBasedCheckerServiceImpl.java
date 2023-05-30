@@ -1,5 +1,5 @@
 package montiarc;
 
-public class EventBasedCheckerServiceImpl {
+public class TimeBasedCheckerServiceImpl {
     // TODO
 }

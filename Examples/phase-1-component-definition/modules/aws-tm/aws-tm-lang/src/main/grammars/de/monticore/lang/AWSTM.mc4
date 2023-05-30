@@ -1,6 +1,6 @@
 package de.monticore.lang;
 
-grammar AWSTM extends de.monticore.lang.DTStructure  {
+grammar AWSTM extends de.monticore.lang.StructureLang  {
 
   AWSTMCompilationUnit = StructureDefinitionCompilationUnit;
 
