@@ -1,9 +1,0 @@
-package de.monticore.lang;
-
-grammar Configuration extends de.monticore.types.Types {
-
-  symbol scope Configuration = PackageDeclaration? "configuration" Name "for" model:Name "{" (ConfigElement || ",")* "}";
-  symbol ConfigElement = Name;
-
-  PackageDeclaration = ("package" QualifiedName ";" );
-}
