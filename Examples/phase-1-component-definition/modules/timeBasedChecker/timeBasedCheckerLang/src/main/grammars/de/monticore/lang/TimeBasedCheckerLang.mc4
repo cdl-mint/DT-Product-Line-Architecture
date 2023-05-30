@@ -1,0 +1,7 @@
+package de.monticore.lang;
+
+grammar TimeBasedCheckerLang extends de.monticore.lang.CheckingLang {
+
+  //TODO
+
+}
