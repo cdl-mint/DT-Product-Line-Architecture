@@ -3,20 +3,7 @@ This repository contains the evaluation details of our publication entitled "Tem
 In the folder [implementation](./implementation), we provide the maven projects for the implementation of the proposed method which we used for our evaluation.
 The folder [evaluation](./evaluation) contains the models required for the performed evaluation.
 
-## Requirements
-- Java 8 JDK
-- Maven 3.8 or higher
-
-## How to build
-- Execute `mvn clean install` in the respective project folder with a pom.xml 
-- Since some projects depend on the `templates` project, please build these projects before building the modules.
-
-## Structure
-This project contains three subfolders on the root level. 
-- The `implementation` folder contains all implementation artifacts of our `framework` and examples of `templates` and `modules` from our concept and evaluation sections. 
-- The `scenario_1` folder contains all artifacts of the evaluation scenario 1. Referenced modules and templates can be found in the implementation folder.
-- The `scenario_2` folder contains all artifacts of the evaluation scenario 2. Referenced modules and templates can be found in the implementation folder.
-
+## Repo Structure
 ```
 ├── implementation
 │   ├── framework
