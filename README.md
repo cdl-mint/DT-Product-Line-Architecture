@@ -1,4 +1,7 @@
 # Template-based Digital Twin Architecture Modeling
+This repository contains the evaluation details of our publication entitled "Template-based Digital Twin Architecture Modeling", which is currently under review for the International Conference on Conceptual Modeling (ER).
+In the folder [implementation](./implementation), we provide the maven projects for the implementation of the proposed method which we used for our evaluation.
+The folder [evaluation](./evaluation) contains the models required for the performed evaluation.
 
 ## Requirements
 - Java 8 JDK
@@ -6,7 +9,7 @@
 
 ## How to build
 - Execute `mvn clean install` in the respective project folder with a pom.xml 
-- Since some projects depend on template project, please build these projects before building the modules.
+- Since some projects depend on the `templates` project, please build these projects before building the modules.
 
 ## Structure
 This project contains three subfolders on the root level. 
