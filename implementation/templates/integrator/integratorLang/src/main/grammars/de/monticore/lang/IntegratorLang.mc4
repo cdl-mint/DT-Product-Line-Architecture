@@ -1,5 +1,0 @@
-package de.monticore.lang;
-
-component grammar IntegratorLang extends de.monticore.types.Types, de.monticore.MCExpressions {
-    //TODO
-}

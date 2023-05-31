@@ -1,9 +1,0 @@
-package de.monticore.lang;
-
-grammar EventBasedCheckerLang extends de.monticore.types.Types, de.monticore.MCExpressions {
-
-
-  Event = "event" Name;
-  //TODO
-
-}
