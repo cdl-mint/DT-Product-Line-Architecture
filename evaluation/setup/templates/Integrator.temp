@@ -1,0 +1,8 @@
+template Integrator {
+  software IntegratorService {
+    // TODO
+  } 
+  language IntegratorLang {
+    // TODO
+  }
+}

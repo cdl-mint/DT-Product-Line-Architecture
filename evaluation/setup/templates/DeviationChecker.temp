@@ -1,0 +1,10 @@
+template DeviationChecker {
+  software CheckerInterface {
+    in IStructure data;
+    out IStructure deviation;
+  }
+  language CheckingLang {
+    requires ConditionElem, ConditionProp;
+    provides Condition;
+  }
+}

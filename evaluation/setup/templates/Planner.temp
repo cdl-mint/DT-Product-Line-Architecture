@@ -1,0 +1,10 @@
+template Planner {
+  software PlannerInterface{
+    in IStructure data;
+    out IMethod command;
+  }
+  language PlannerLang{
+    requires ElemType, Capability, ElemProperty, Action;
+    provides GoalSpec;
+  }
+}  

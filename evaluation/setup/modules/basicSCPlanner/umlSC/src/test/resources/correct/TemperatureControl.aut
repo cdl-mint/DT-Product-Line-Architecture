@@ -1,0 +1,11 @@
+package correct;
+
+import correct.Thermostat;
+
+statechart TemperatureControl {
+  state Idle; state TempTooLow; state TempTooHigh;
+  Idle -> TempTooLow [temp < 20] / {call setTemp(20)};
+  Idle -> TempTooHigh [temp > 20] / {temp = 20};
+  TempTooLow -> Idle  [temp == 20] /{};
+  TempTooHigh -> Idle  [temp == 20] /{};
+}

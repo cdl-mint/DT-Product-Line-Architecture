@@ -1,0 +1,7 @@
+package de.monticore.lang;
+
+grammar MomotLang extends de.monticore.types.Types, de.monticore.MCExpressions  {
+
+  Momot = "rule" Name;
+
+}
