@@ -6,12 +6,11 @@ The folder [evaluation](./evaluation) contains the models required for the perfo
 ## Repo Structure
 ```
 ├── implementation
-│   ├── framework
-│   │   ├── dt-architecture-lang
-│   │   ├── dt-module-lang
-│   │   ├── dt-template-lang
-│   │   ├── product-line-config-lang
-│   │   ├── product-line-lang
+│   ├── dt-architecture-lang
+│   ├── dt-module-lang
+│   ├── dt-template-lang
+│   ├── product-line-config-lang
+│   ├── product-line-lang
 │   ├── modules
 │   │   ├── aws-tm
 │   │   ├── azure
@@ -20,11 +19,9 @@ The folder [evaluation](./evaluation) contains the models required for the perfo
 │   │   ├── dt-platform
 │   │   ├── planner
 │   │   ├── ...
-├── scenario_1
-│   ├── scenario_1_a
-│   ├── scenario_1_b
-├── scenario_2
-│   ├── scenario_2_a
-│   ├── scenario_2_b
+├── evaluation
+│   ├── setup
+│   ├── scenario_1
+│   ├── scenario_2
 
 ```
