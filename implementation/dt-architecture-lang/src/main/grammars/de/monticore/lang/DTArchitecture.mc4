@@ -2,8 +2,9 @@ package de.monticore.lang;
 
 grammar DTArchitecture extends de.monticore.types.Types {
 
-  DTArchitectureDef = PackageDeclaration? ImportStatement* "refarch" Name "{" ArchitectureDefBody "}";
+  DTArchitectureDef = PackageDeclaration? TemplateImportStatement+ "refarch" Name "{" ArchitectureDefBody "}";
   PackageDeclaration = ("package" QualifiedName ";" );
+  TemplateImportStatement extends ImportStatement = "import" import:(Name || ".")+ ("." Star:["*"])? ("as" instanceName:Name)? ";";
 
   ArchitectureDefBody = (SoftwareArchitecture | LanguageArchitecture)+;
 
