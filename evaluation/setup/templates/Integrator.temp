@@ -1,8 +1,12 @@
 template Integrator {
-  software IntegratorService {
-    // TODO
+software DataAccessInterface{
+    in IMethod incomingCommand;
+    out IMethod outgoingCommand;
+    out IStructure outgoingData;
+    in IStructure incomingData;
   } 
-  language IntegratorLang {
-    // TODO
+  language StructureLang{
+    provides IN_TypeDef, IN_MethodDef, IN_MethodParamDef, IN_PropertyDef, IN_Instance, IN_MethodCall;
+    requires OUT_TypeDef, OUT_MethodDef, OUT_MethodParamDef, OUT_PropertyDef, OUT_Instance, OUT_MethodCall;
   }
 }
