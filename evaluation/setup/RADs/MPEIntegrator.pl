@@ -1,13 +1,16 @@
 featuremodel MPEIntegrator {
 	tree DigitalTwin {
-		mandatory DTPlatform {
+		mandatory pf1 {
+			AWSIoTTwinMaker; xor Azure;
+		}
+		mandatory pf2 {
 			AWSIoTTwinMaker; xor Azure;
 		}
 		mandatory Planner {
             TimedStatecharts; xor BasicStatecharts; xor MOMOT;
         }
-		mandatory Integraotr {
-            TimedStatecharts; xor BasicStatecharts; xor MOMOT;
+		mandatory integr {
+            AWSIoTTwinMakerIntegrator; xor AzureIntegrator;
         }
 	}
 }
