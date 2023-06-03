@@ -16,24 +16,6 @@
 - The folders with postfix `-lang` include the languages of our framework realizing the concepts of the presented metamodel. 
 - The concepts of these language are defined on syntax level in the grammars located in the folder `src/main/java` of each project.
 
-```
-├── dt-architecture-lang
-|   ├── src/main/grammars/../DTArchitecture.mc4
-|   ├── ...
-├── dt-module-lang
-├── dt-template-lang
-├── product-line-config-lang
-├── product-line-lang
-├── modules
-│   ├── aws-tm
-│   ├── azure
-│   ├── ...
-├── templates
-│   ├── dt-platform
-│   ├── planner
-│   ├── ...
-```
-
 
 ![The Metamodel of template definitions (green), module definitions (blue), reference architecture definitions
 (grey), and the DT product line generated from the previously mentioned information.](pics/metamodel.jpg)

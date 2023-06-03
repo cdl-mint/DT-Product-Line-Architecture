@@ -1,5 +1,7 @@
 # Evaluation
 
+This folder contains the models created during the evaluation presented in the paper. The folder `setup` contains all template, module, and reference architecture definitions that are described in the evaluation setup. The remaining subfolders contain the data for the respective scenarios, as described below.
+
 ## Scenario 1: Building DT architecture variants
 In a typical situation, our partner’s clients already use certain DT services and platforms. As a result,
 our industry partner is forced to tailor a wide range of DT architectures that use customized tool combinations to satisfy the different customers’ needs. Whereas some of these DT architectures implement the same functionality and also share the same reference architecture (Scenario 1.A), others implement different applications, but still share architectural similarities (Scenario 1.B). The manual configuration of all these DT architectures is evidently tedious and error-prone, as it involves a lot of redundant work.
@@ -11,17 +13,5 @@ For instance, clients might ask to add a new time-based deviation checker to rep
 Extending DT architecture functionality of existing templates with new module implementations (Scenario 2.A) requires the adaptation of existing DT architectures using this new implementation.
 In a manual setting, this usually involves significant integration effort, as the new tool has to be connected to each DT architecture configuration, while making sure that both, the software interfaces match, and the individual tool languages are made compatible. Clearly, this effort grows exponentially as the number of services and tools grows.
 Over time, continuous innovation also leads to the development of new DT-related functionality. Introducing such new functionality into existing DT architectures (Scenario 2.B) adds another level of complexity to the integration process, as this communication with existing functionality needs to be defined for all different configuration options.
-The folder `scenario_2` contains a evolution of the architecture from Scenario 1 together with the derived product line. 
+The folder `scenario_2` contains two subfulders (i.e. `scenario_2_a` and `scenario_2_b`) that contain the additional module or reference architecture definition as well as the adapted architecture models required to perform the evolutions from the architectures in scenario 1, as described in the paper.
 
-## Repo Structure
-```
-├── scenario_1
-│   ├── MAPE_AZ_T_BSC.conf
-├── scenario_2
-│   ├── MAPENew.arc
-│   ├── MAPENew.pl
-├── setup
-│   ├── modules
-│   ├── templates
-│   ├── RADs
-```
