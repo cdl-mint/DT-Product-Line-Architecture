@@ -1,0 +1,185 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- == PROJECT COORDINATES ============================================= -->
+  <groupId>montiarc.dtpl</groupId>
+  <artifactId>ma-sample</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+
+  <!-- == PROJECT PROPERTIES ============================================== -->
+  <properties>
+    <monticore.version>5.0.0.1</monticore.version>
+    <logback.version>1.1.2</logback.version>
+    <montiarc.version>5.0.0</montiarc.version>
+    <se-groovy.maven.version>1.2.3</se-groovy.maven.version>
+    <junit.version>4.13.1</junit.version>
+    <se-commons.version>1.7.8</se-commons.version>
+    <models.dir>${basedir}/src/main/resources/</models.dir>
+    <hwc.dir>${basedir}/src/main/java/</hwc.dir>
+    <gen.dir>${basedir}/target/generated-sources/</gen.dir>
+
+    <!-- Classifiers -->
+    <grammars.classifier>grammars</grammars.classifier>
+    <majavalib.classifier>majavalibclasses</majavalib.classifier>
+    <librarymodels.classifier>librarymodels</librarymodels.classifier>
+    <testmodels.classifier>testmodels</testmodels.classifier>
+
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <!-- == PROJECT DEPENDENCIES ============================================= -->
+  <dependencies>
+    <!-- == MONTIARC ============================================= -->
+    <dependency>
+      <groupId>montiarc.libraries</groupId>
+      <artifactId>maJavaLib</artifactId>
+      <version>${montiarc.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>montiarc.libraries</groupId>
+      <artifactId>maa-rte</artifactId>
+      <version>${montiarc.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>de.se_rwth.commons</groupId>
+      <artifactId>se-commons-groovy</artifactId>
+      <version>${se-commons.version}</version>
+    </dependency>
+
+
+    <!-- .. Test Libraries ............................................... -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+      <version>${junit.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>de.monticore</groupId>
+      <artifactId>monticore-runtime</artifactId>
+      <type>test-jar</type>
+      <scope>test</scope>
+      <version>${monticore.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <scope>runtime</scope>
+      <version>${logback.version}</version>
+    </dependency>
+
+  </dependencies>
+
+  <!-- == BUILD CONFIGURATION ============================================= -->
+  <build>
+    <plugins>
+      <!-- DEPENDENCY PLUGIN -->
+      <!-- Reason: Unpack sources files of dependencies with classifier 'models'
+        to output directory -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.10</version>
+        <executions>
+          <execution>
+            <id>unpack-dependencies</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <includeClassifiers>${librarymodels.classifier}, models</includeClassifiers>
+              <outputDirectory>${basedir}/target/${librarymodels.classifier}/</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>unpack</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>montiarc.libraries</groupId>
+                  <artifactId>maJavaLib</artifactId>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${basedir}/target/${librarymodels.classifier}/</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>de.se_rwth.maven</groupId>
+        <artifactId>se-groovy-maven-plugin</artifactId>
+        <configuration>
+          <baseClass>de.montiarcautomaton.generator.codegen.MAAGeneratorScript</baseClass>
+          <arguments>
+            <out>${basedir}/target/generated-sources/</out>
+            <modelPath>${basedir}/src/main/resources/models</modelPath>
+            <handwrittenCode>${basedir}/src/main/java</handwrittenCode>
+          </arguments>
+          <script>de/montiarcautomaton/generator/maagenerator.groovy</script>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>montiarc.generators</groupId>
+            <artifactId>maa2java</artifactId>
+            <version>${montiarc.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>de.se_rwth.commons</groupId>
+            <artifactId>se-commons-utilities</artifactId>
+            <version>${se-commons.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.12</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${basedir}/target/generated-sources/</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>se-nexus-public</id>
+      <url>https://nexus.se.rwth-aachen.de/content/groups/public/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>se-nexus-public</id>
+      <url>https://nexus.se.rwth-aachen.de/content/groups/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+
+</project>
