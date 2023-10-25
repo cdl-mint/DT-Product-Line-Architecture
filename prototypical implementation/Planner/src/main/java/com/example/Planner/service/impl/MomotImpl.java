@@ -66,14 +66,13 @@ public class MomotImpl implements PlannerService {
         final EvolutionaryAlgorithmFactory<TransformationSolution> moea = search
                 .createEvolutionaryAlgorithmFactory(POPULATION_SIZE);
         search.addAlgorithm("NSGA-II_1", moea.createNSGAII(
-
                 new TournamentSelection(2),
                 // new RetiringSolutionVariation(orchestration.getSearchHelper(), 50, populationSize, 90),
                 new OnePointCrossover(1.0), new TransformationParameterMutation(0.05, search.getModuleManager()),
                 new TransformationVariableMutation(search.getSearchHelper(), 0.05),
                 new TransformationPlaceholderMutation(0.05)));
 
-        final com.example.Planner.moea.SearchExperiment<TransformationSolution> experiment = new at.ac.tuwien.big.moea.SearchExperiment<>(search, MAX_EVALUATIONS,
+        final com.example.Planner.moea.SearchExperiment<TransformationSolution> experiment = new com.example.Planner.moea.SearchExperiment<>(search, MAX_EVALUATIONS,
                 condition);
         // experiment.setReferenceSetFile(REFERENCE_SET);
         experiment.setNumberOfRuns(100);
@@ -85,15 +84,14 @@ public class MomotImpl implements PlannerService {
         System.out.println("Analysis");
         System.out.println("-------------------------------------------------------");
 
-        performAnalysis(experiment);
+        //performAnalysis(experiment);
         System.out.println("-------------------------------------------------------");
         System.out.println("Results");
         System.out.println("-------------------------------------------------------");
-        handleResults(experiment);
-        return null;
+        //handleResults(experiment);
     }
 
-    protected static at.ac.tuwien.big.momot.TransformationResultManager handleResults(
+    /*protected static at.ac.tuwien.big.momot.TransformationResultManager handleResults(
             final at.ac.tuwien.big.moea.SearchExperiment<at.ac.tuwien.big.momot.problem.solution.TransformationSolution> experiment) {
 
         final at.ac.tuwien.big.momot.TransformationResultManager resultManager = new at.ac.tuwien.big.momot.TransformationResultManager(experiment);
@@ -147,5 +145,5 @@ public class MomotImpl implements PlannerService {
             e.printStackTrace();
         }
         return searchAnalyzer;
-    }
+    }*/
 }

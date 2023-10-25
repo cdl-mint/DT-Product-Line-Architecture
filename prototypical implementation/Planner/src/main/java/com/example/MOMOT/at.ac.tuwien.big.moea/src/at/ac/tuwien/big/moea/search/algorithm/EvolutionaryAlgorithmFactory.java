@@ -1,4 +1,4 @@
-package at.ac.tuwien.big.moea.search.algorithm;
+package com.example.Planner.moea.search.algorithm;
 
 import at.ac.tuwien.big.moea.ISearchOrchestration;
 import at.ac.tuwien.big.moea.search.algorithm.operator.CustomCompoundVariation;
@@ -143,7 +143,7 @@ public class EvolutionaryAlgorithmFactory<S extends Solution> extends AbstractAl
       return new AbstractRegisteredAlgorithm<NSGAII>() {
          @Override
          public NSGAII createAlgorithm() {
-            return new NSGAII(createProblem(), createSortingPopulation(), createEpsilonBoxArchive(), selection,
+            return new NSGAII(createProblem(), 100, createSortingPopulation(), createEpsilonBoxArchive(), selection,
                   createVariation(variation), createInitialization());
          }
       };

@@ -1,7 +1,7 @@
 package com.example.Planner.moea.search.algorithm;
 
-import at.ac.tuwien.big.moea.ISearchOrchestration;
-import at.ac.tuwien.big.moea.problem.ISearchProblem;
+import com.example.Planner.moea.ISearchOrchestration;
+import com.example.Planner.moea.problem.ISearchProblem;
 
 import org.moeaframework.core.EpsilonBoxDominanceArchive;
 import org.moeaframework.core.NondominatedPopulation;

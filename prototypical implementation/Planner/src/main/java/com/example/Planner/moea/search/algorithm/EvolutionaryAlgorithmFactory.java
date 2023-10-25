@@ -1,11 +1,11 @@
 package com.example.Planner.moea.search.algorithm;
 
-import at.ac.tuwien.big.moea.ISearchOrchestration;
-import at.ac.tuwien.big.moea.search.algorithm.operator.CustomCompoundVariation;
-import at.ac.tuwien.big.moea.search.algorithm.operator.mutation.PlaceholderMutation;
-import at.ac.tuwien.big.moea.search.algorithm.provider.AbstractRegisteredAlgorithm;
-import at.ac.tuwien.big.moea.search.algorithm.provider.IRegisteredAlgorithm;
-import at.ac.tuwien.big.moea.search.solution.generator.IInjectedPopulationGenerator;
+import com.example.Planner.moea.ISearchOrchestration;
+import com.example.Planner.moea.search.algorithm.operator.CustomCompoundVariation;
+import com.example.Planner.moea.search.algorithm.operator.mutation.PlaceholderMutation;
+import com.example.Planner.moea.search.algorithm.provider.AbstractRegisteredAlgorithm;
+import com.example.Planner.moea.search.algorithm.provider.IRegisteredAlgorithm;
+import com.example.Planner.moea.search.solution.generator.IInjectedPopulationGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +92,7 @@ public class EvolutionaryAlgorithmFactory<S extends Solution> extends AbstractAl
       return new AbstractRegisteredAlgorithm<EpsilonMOEA>() {
          @Override
          public EpsilonMOEA createAlgorithm() {
-            return new EpsilonMOEA(createProblem(), createPopulation(), createEpsilonBoxArchive(epsilon), selection,
+            return new EpsilonMOEA(createProblem(), 100, createPopulation(), createEpsilonBoxArchive(epsilon), selection,
                   createVariation(variation), createInitialization());
          }
       };
@@ -103,7 +103,7 @@ public class EvolutionaryAlgorithmFactory<S extends Solution> extends AbstractAl
       return new AbstractRegisteredAlgorithm<IBEA>() {
          @Override
          public IBEA createAlgorithm() {
-            return new IBEA(createProblem(), createPopulation(), createInitialization(), createVariation(variation),
+            return new IBEA(createProblem(), 100, createPopulation(), createInitialization(), createVariation(variation),
                   evaluator);
          }
       };
