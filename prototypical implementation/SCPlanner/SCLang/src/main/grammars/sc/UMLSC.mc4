@@ -1,0 +1,33 @@
+package sc;
+
+grammar UMLSC extends de.monticore.types.Types, de.monticore.MCExpressions {
+
+  SCCompilationUnit =
+          ("package" package:(Name& || ".")+ ";")?
+          (ImportStatementLOCAL)*                        // import statements
+          SC
+          EOF;
+
+  ImportStatementLOCAL = "import" import:(Name& || ".")+ ("." Star:["*"])? ";";
+
+
+  scope symbol SC  = "statechart" Name ("(" Parameter+ ")")? "{" (IState | Transition)* "}";
+
+  Parameter = Type Name;
+
+  interface IState;
+  interface IAction;
+  interface IGuardExpr;
+  
+  symbol StateBase implements IState = ["initial"]? "state" Name ";";
+  
+  Transition = source:Name "->" target:Name "[" IGuardExpr "]" "/" "{" IAction "}" ";";
+
+  BaseGuardExpression implements IGuardExpr = Expression;
+  ActionBase implements IAction = (Assignment | (call:["call"] Expression))?;
+  Assignment = PropertyReference assignment:["="] Value;
+  PropertyReference = QualifiedName;
+
+  Value = Expression;
+  
+}
