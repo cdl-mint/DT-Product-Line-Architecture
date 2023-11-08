@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>basicSCExecutor</artifactId>
+  <groupId>dt-language-family</groupId>
+  <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <monticore.version>5.0.1</monticore.version>
+    <source.plugin>2.4</source.plugin>
+    <javaDSL.version>4.3.12</javaDSL.version>
+    <se-commons.version>1.7.8</se-commons.version>
+
+    <feature-diagram-fe.version>
+      0.0.2-SNAPSHOT
+    </feature-diagram-fe.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <assembly.plugin>2.5.3</assembly.plugin>
+    <mc.grammars.assembly.version>0.0.8</mc.grammars.assembly.version>
+    <grammars.classifier>grammars</grammars.classifier>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+    <montiarc.version>5.0.0</montiarc.version>
+    <majavalib.classifier>majavalibclasses</majavalib.classifier>
+    <librarymodels.classifier>librarymodels</librarymodels.classifier>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>de.se_rwth.commons</groupId>
+      <artifactId>se-commons-logging</artifactId>
+      <version>1.7.8</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr4-runtime</artifactId>
+      <version>4.7.1</version>
+    </dependency>
+
+    <!-- MontiCore Dependencies -->
+    <dependency>
+      <groupId>de.monticore</groupId>
+      <artifactId>monticore-runtime</artifactId>
+      <version>${monticore.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>de.monticore</groupId>
+      <artifactId>monticore-grammar</artifactId>
+      <version>${monticore.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>de.monticore</groupId>
+      <artifactId>monticore-grammar</artifactId>
+      <version>${monticore.version}</version>
+      <classifier>grammars</classifier>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>de.monticore</groupId>
+      <artifactId>monticore-generator</artifactId>
+      <version>${monticore.version}</version>
+    </dependency>
+    <!-- .. Test Libraries ............................................... -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>de.monticore</groupId>
+      <artifactId>monticore-runtime</artifactId>
+      <version>${monticore.version}</version>
+      <type>test-jar</type>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>montiarc.libraries</groupId>
+      <artifactId>maJavaLib</artifactId>
+      <version>${montiarc.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>montiarc.libraries</groupId>
+      <artifactId>maa-rte</artifactId>
+      <version>${montiarc.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>montiarc.libraries</groupId>
+      <artifactId>maa-rte</artifactId>
+      <version>${montiarc.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>SCLang</artifactId>
+      <groupId>dt-language-family</groupId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.1.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.10</version>
+        <executions>
+          <execution>
+            <id>unpack-dependencies</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <includeClassifiers>${librarymodels.classifier}, models</includeClassifiers>
+              <outputDirectory>${basedir}/target/${librarymodels.classifier}/</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>unpack</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>montiarc.libraries</groupId>
+                  <artifactId>maJavaLib</artifactId>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${basedir}/target/${librarymodels.classifier}/</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>${source.plugin}</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>de.se_rwth.maven</groupId>
+        <artifactId>se-groovy-maven-plugin</artifactId>
+        <configuration>
+          <baseClass>de.montiarcautomaton.generator.codegen.MAAGeneratorScript</baseClass>
+          <arguments>
+            <out>${basedir}/target/generated-sources/</out>
+            <modelPath>${basedir}/src/main/resources/</modelPath>
+            <handwrittenCode>${basedir}/src/main/java</handwrittenCode>
+          </arguments>
+          <script>de/montiarcautomaton/generator/maagenerator.groovy</script>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>execute</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>montiarc.generators</groupId>
+            <artifactId>maa2java</artifactId>
+            <version>${montiarc.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>de.se_rwth.commons</groupId>
+            <artifactId>se-commons-utilities</artifactId>
+            <version>${se-commons.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.12</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${basedir}/target/generated-sources/</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
