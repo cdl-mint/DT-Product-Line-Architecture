@@ -1,4 +1,4 @@
-package at.ac.tuwien.big.momot.examples.reactive;
+/*package at.ac.tuwien.big.momot.examples.reactive;
 
 import at.ac.tuwien.big.moea.util.MathUtil;
 import com.example.Planner.momotcore.models.at.ac.tuwien.big.momot.examples.stack.stack.Stack;
@@ -109,3 +109,4 @@ public class StackUtils implements IReactiveUtilities {
    }
 
 }
+*/

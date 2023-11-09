@@ -1,5 +1,5 @@
 package com.example.DTPlatform.service.impl;
-
+/*
 import com.example.DTPlatform.model.Twin;
 import com.example.DTPlatform.service.DTPlatformService;
 import org.springframework.stereotype.Service;
@@ -19,11 +19,12 @@ public class EclipseDTPlatformServiceImpl implements DTPlatformService {
     }
 
     public EclipseDTPlatformServiceImpl(Twin twin) {
-        /*this.twinManagerName = twin.getTwinManager().getName();
+        this.twinManagerName = twin.getTwinManager().getName();
         this.twinName = twin.getName();
-        this.baseUrl = twin.getLocation();*/
+        this.baseUrl = twin.getLocation();
     }
 
 
 
 }
+*/

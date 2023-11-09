@@ -1,7 +1,6 @@
 package com.example.DTPlatform.controller;
 
-import com.example.DTPlatform.model.Parameter;
-import com.example.DTPlatform.model.TwinManager;
+
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +19,8 @@ public class BXSyncController {
     }
 
     @PutMapping(value = "/{managerName}/twins/{twinName}/operations{opName}/execute")
-    void executeOperation(@PathVariable String managerName, @PathVariable String twinName, @PathVariable String opName, @RequestBody List<Parameter> arguments) {
-        TwinManager manager = new TwinManager(managerName, null);
+    void executeOperation(@PathVariable String managerName, @PathVariable String twinName, @PathVariable String opName) {
+        //TwinManager manager = new TwinManager(managerName, null);
         /*manager.addTwin("simulation", "http://localhost:8081/henshin");
         TwinType.Twin twin = manager.getTwin(twinName);
         // todo: the above code should be replaced by calls to the TwinManagementController/TwinManagerService

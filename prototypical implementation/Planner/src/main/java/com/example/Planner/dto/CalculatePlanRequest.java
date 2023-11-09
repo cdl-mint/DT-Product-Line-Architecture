@@ -1,6 +1,7 @@
 package com.example.Planner.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import com.example.Planner.template.lang.TwinState;
 
 public class CalculatePlanRequest {
 

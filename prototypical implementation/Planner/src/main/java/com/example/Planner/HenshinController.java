@@ -7,11 +7,12 @@ import java.util.List;
 
 import com.example.Planner.dto.*;
 import com.example.Planner.dto.Parameter;
-import com.example.Planner.service.PlannerService;
+import com.example.Planner.template.PlannerService;
 import com.example.Planner.stack.StackFactory;
 import com.example.Planner.stack.StackModel;
 import com.example.Planner.stack.StackPackage;
 import io.swagger.annotations.ApiOperation;
+import com.example.Planner.template.lang.TwinOperation;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
@@ -84,8 +85,8 @@ public class HenshinController{
 	@GetMapping(value="/plan")
 	public CalculatePlanResponse calculatePlanWithMomot(@RequestBody CalculatePlanRequest request){
 		CalculatePlanResponse response = new CalculatePlanResponse();
-		List<TwinOperation> plan = plannerService.plan(request.getCurrentState());
-		response.setPlan(plan);
+		//List<TwinOperation> plan = plannerService.plan(request.getCurrentState());
+		//response.setPlan(plan);
 		return response;
 	}
 	@GetMapping(value="/nextAction")

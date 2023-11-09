@@ -2,7 +2,6 @@
  */
 package com.example.Planner.stack;
 
-import com.example.Planner.momotcore.models.at.ac.tuwien.big.momot.examples.stack.stack.StackPackage;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 

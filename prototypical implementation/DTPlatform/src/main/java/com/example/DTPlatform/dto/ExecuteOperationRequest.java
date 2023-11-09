@@ -1,6 +1,5 @@
 package com.example.DTPlatform.dto;
 
-import com.example.DTPlatform.model.Parameter;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
@@ -19,9 +18,9 @@ public class ExecuteOperationRequest {
         return opName;
     }
 
-    public List<Parameter> getParams() {
+   /* public List<Parameter> getParams() {
         return params;
-    }
+    }*/
 
     @ApiModelProperty
     private String twinManagerName;
@@ -29,14 +28,14 @@ public class ExecuteOperationRequest {
     private String twinName;
     @ApiModelProperty
     private String opName;
-    @ApiModelProperty
-    private List<Parameter> params;
+    //@ApiModelProperty
+   // private List<Parameter> params;
 
-    public ExecuteOperationRequest(String twinManagerName, String twinName, String opName, List<Parameter> params) {
+    public ExecuteOperationRequest(String twinManagerName, String twinName, String opName) {
         this.twinManagerName = twinManagerName;
         this.twinName = twinName;
         this.opName = opName;
-        this.params = params;
+        //this.params = params;
     }
 
     public ExecuteOperationRequest(){
