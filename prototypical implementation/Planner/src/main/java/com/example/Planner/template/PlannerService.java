@@ -1,7 +1,7 @@
 package com.example.Planner.template;
 
-import com.example.Planner.template.lang.TwinOperationExecution;
-import com.example.Planner.template.lang.TwinState;
+import com.example.DTPlatform.template.lang.TwinOperationExecution;
+import com.example.DTPlatform.template.lang.TwinState;
 
 public interface PlannerService {
 

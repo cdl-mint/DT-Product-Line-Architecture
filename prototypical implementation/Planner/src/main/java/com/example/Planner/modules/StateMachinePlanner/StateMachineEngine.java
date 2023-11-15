@@ -1,9 +1,8 @@
 package com.example.Planner.modules.StateMachinePlanner;
 
-import com.example.Planner.modules.StateMachinePlanner.lang.State;
 import com.example.Planner.modules.StateMachinePlanner.lang.StateMachine;
 import com.example.Planner.modules.StateMachinePlanner.lang.Transition;
-import com.example.Planner.template.lang.TwinState;
+import com.example.DTPlatform.template.lang.TwinState;
 
 import java.lang.reflect.Field;
 

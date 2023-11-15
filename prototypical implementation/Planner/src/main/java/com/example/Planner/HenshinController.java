@@ -12,7 +12,6 @@ import com.example.Planner.stack.StackFactory;
 import com.example.Planner.stack.StackModel;
 import com.example.Planner.stack.StackPackage;
 import io.swagger.annotations.ApiOperation;
-import com.example.Planner.template.lang.TwinOperation;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;

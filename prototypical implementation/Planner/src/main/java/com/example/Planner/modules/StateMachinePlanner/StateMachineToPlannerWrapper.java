@@ -2,16 +2,13 @@ package com.example.Planner.modules.StateMachinePlanner;
 
 import com.example.Planner.modules.MomotPlanner.MomotWrapper;
 import com.example.Planner.template.PlannerService;
-import com.example.Planner.template.lang.TwinOperation;
-import com.example.Planner.template.lang.TwinOperationExecution;
-import com.example.Planner.template.lang.TwinState;
+import com.example.DTPlatform.template.lang.TwinOperationExecution;
+import com.example.DTPlatform.template.lang.TwinState;
 import org.eclipse.emf.henshin.interpreter.EGraph;
 import org.eclipse.emf.henshin.interpreter.UnitApplication;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 public class StateMachineToPlannerWrapper implements PlannerService {
 

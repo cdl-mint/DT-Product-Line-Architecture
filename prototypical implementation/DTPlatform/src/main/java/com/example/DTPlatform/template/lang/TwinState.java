@@ -1,4 +1,4 @@
-package com.example.Planner.template.lang;
+package com.example.DTPlatform.template.lang;
 
 import java.util.List;
 

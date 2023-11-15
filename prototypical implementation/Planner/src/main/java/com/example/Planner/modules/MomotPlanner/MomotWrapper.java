@@ -5,22 +5,15 @@ import com.example.Planner.stack.Stack;
 import com.example.Planner.stack.StackFactory;
 import com.example.Planner.stack.StackModel;
 import com.example.Planner.stack.StackPackage;
-import com.example.Planner.template.PlannerService;
-import com.example.Planner.template.lang.TwinOperation;
-import com.example.Planner.template.lang.TwinState;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.henshin.interpreter.EGraph;
 import org.eclipse.emf.henshin.interpreter.UnitApplication;
 import org.eclipse.emf.henshin.model.resource.HenshinResourceSet;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.Map;
 
 
 public class MomotWrapper {
